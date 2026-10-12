@@ -177,7 +177,7 @@ function metaSidebar(model) {
 
 function photoHtml(src, name) {
   if (!src) return "";
-  return `<img class="portrait" src="${src}" alt="${escapeHtml(name)}" width="112" height="112" />`;
+  return `<img class="portrait" src="${src}" alt="Portrait of ${escapeHtml(name)}" width="128" height="128" />`;
 }
 
 function toMarkdown(model) {
