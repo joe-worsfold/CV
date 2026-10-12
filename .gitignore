@@ -1,2 +1,10 @@
-*.html
+node_modules/
+.playwright/
+inbox/*
+!inbox/.gitkeep
+!inbox/README.md
+out/*
+!out/.gitkeep
 /bespoke
+*.tmp.html
+.DS_Store

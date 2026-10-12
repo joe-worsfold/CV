@@ -1,0 +1,433 @@
+# Canonical CV facts — edit this file, then run: pnpm cv:build
+# status on bullets/projects: shipped | in_progress | internal
+
+identity:
+  name: Joe Worsfold
+  location: London, United Kingdom
+  phone: "+44 7414 873908"
+  email: joseph.worsfold@gmail.com
+  links:
+    - label: GitHub
+      url: https://github.com/joe-worsfold
+    - label: CV repo
+      url: https://github.com/joe-worsfold/CV
+  work_eligibility: UK
+  preferences:
+    work_type: Remote or hybrid (UK)
+    targets:
+      - Staff AI Engineer
+      - Founding Engineer
+      - Principal / Staff Platform Engineer
+
+titles:
+  legal_title: Technical Director
+  market_title: Principal Engineer (AI & Platform)
+  # Per-run override via CLI: --headline "Staff AI Engineer"
+
+summary: >
+  Principal Engineer (AI & Platform) and Technical Director at Stack Foundry Ltd,
+  with 8+ years shipping production systems in insurance and government. Recently
+  delivered a production-scale master data platform for specialty insurance —
+  RAG, embeddings, OpenSearch semantic enrichment, and agentic entity resolution
+  where deterministic matching fails — used by underwriters and dataops.
+  Building agent-to-agent harnesses for local context and document embeddings
+  (Prism), plus Helmsman readiness checks for AI-native engineering. Prior lead
+  roles in Go/TypeScript serverless platforms at Aviva Zero and Flock.
+
+skills:
+  - group: AI & agents
+    items:
+      - RAG & embeddings
+      - OpenSearch semantic search
+      - LangChain agentic workflows
+      - LLM selection & evaluation harnesses
+      - Agent-to-agent context assembly
+      - MCP-oriented tool boundaries
+      - Cursor / AI-native engineering
+      - Helmsman AI-readiness checks
+  - group: Languages
+    items:
+      - Rust
+      - Go
+      - TypeScript
+      - Python
+      - SQL
+  - group: Cloud & platform
+    items:
+      - AWS Lambda
+      - API Gateway
+      - EventBridge
+      - SQS
+      - DynamoDB
+      - ECS
+      - Step Functions
+      - CDK / Terraform
+      - Serverless event-driven architectures
+  - group: Data
+    items:
+      - OpenSearch
+      - Neo4j
+      - PostgreSQL
+      - SurrealDB
+      - Pinecone
+      - DynamoDB
+  - group: Frontend
+    items:
+      - React
+      - Next.js
+      - HTML / CSS
+      - Accessible UI
+  - group: Practices
+    items:
+      - Observability (Datadog, CloudWatch, PagerDuty)
+      - CI/CD (GitHub Actions)
+      - Tech leadership & mentoring
+      - FCA-aware financial services delivery
+
+roles:
+  - id: stack-foundry
+    employer: Stack Foundry Ltd
+    title_key: market # resolves to titles.market_title; legal shown in subtitle
+    location: Remote
+    start: "2025-07"
+    end: present
+    one_liner: >
+      Founder-led engineering consultancy. Principal delivery on AI-native
+      platforms and specialty-insurance data systems; building Prism and Helmsman.
+    note: >
+      Consultancy started while wrapping Aviva Zero.
+    stack_line: >
+      Rust, TypeScript, Python, AWS (Lambda, OpenSearch, event-driven), LangChain,
+      RAG/embeddings, SurrealDB, Cursor
+    bullets:
+      - id: sf-mdm
+        status: shipped
+        priority: 100
+        tags: [ai, rag, opensearch, langchain, mdm, insurance, aws, leadership]
+        text: >
+          Delivered a production master data management platform for a specialty
+          insurance client in six months, replacing multi-system complexity with
+          one source of truth — fewer engineers to maintain and fewer ops agents
+          to run. Used at production scale by underwriters and dataops.
+      - id: sf-rag-opensearch
+        status: shipped
+        priority: 95
+        tags: [ai, rag, embeddings, opensearch, search]
+        text: >
+          Designed LLM selection, RAG, and embedding pipelines with OpenSearch
+          semantic enrichment to improve discoverability across messy insurance
+          master data.
+      - id: sf-agentic-er
+        status: shipped
+        priority: 94
+        tags: [ai, langchain, agents, entity-resolution, mdm]
+        text: >
+          When deterministic entity resolution failed, introduced LangChain
+          agentic workflows so the system could gather context and propose
+          decisions for human approval — increasing agency without silent
+          autonomous binds.
+      - id: sf-ai-native
+        status: shipped
+        priority: 88
+        tags: [ai-native, mentoring, guardrails, cursor]
+        text: >
+          Taught client developers AI-native delivery and built bespoke
+          guardrails for agentic coding workflows (Cursor-centred practice).
+      - id: sf-prism
+        status: in_progress
+        priority: 80
+        tags: [ai, agents, embeddings, prism, a2a]
+        text: >
+          Building Prism — an agent-to-agent workbench focused on local context
+          assembly and document embeddings for underwriting-style knowledge work
+          (active product development; not a customer production deploy).
+      - id: sf-helmsman
+        status: internal
+        priority: 75
+        tags: [ai-native, helmsman, tooling, rust, typescript]
+        text: >
+          Created Helmsman — rules, skills, and checks that score AI-readiness
+          and keep agent-written code honest. Used on Prism and NIDOS; patterns
+          inspired by production AI delivery flows.
+
+  - id: aviva-zero
+    employer: Aviva Zero
+    title: Senior Full Stack Software Engineer
+    location: London
+    start: "2024-01"
+    end: "2025-11"
+    one_liner: >
+      Climate-focused insurance platform — high-availability Go/TypeScript
+      services and accessible React frontends.
+    stack_line: >
+      Backend: Go, AWS Lambda, API Gateway, EventBridge, SQS |
+      Frontend: TypeScript, React, Next.js, ECS |
+      CI/CD: CDK, GitHub Actions, Datadog, PagerDuty
+    bullets:
+      - id: av-event
+        status: shipped
+        priority: 90
+        tags: [go, aws, serverless, event-driven]
+        text: >
+          Designed and implemented event-driven serverless architectures in Go
+          using Lambda, SQS, EventBridge, and SES for asynchronous workflows,
+          scheduling, and alerting across policy and payment services.
+      - id: av-scale
+        status: shipped
+        priority: 88
+        tags: [scale, reliability, insurance]
+        text: >
+          Built and maintained a platform that has sold over a million policies
+          and supports tens of thousands of daily users, with 24/7 reliability
+          through monitoring and performance work.
+      - id: av-finance
+        status: shipped
+        priority: 85
+        tags: [payments, fca, go]
+        text: >
+          Delivered financially sensitive services including BACS payment
+          workflows, interest-bearing monthly instalments, and secure customer
+          interactions within FCA-regulated boundaries.
+      - id: av-ui
+        status: shipped
+        priority: 70
+        tags: [react, frontend, a11y]
+        text: >
+          Shipped accessible React frontends from Figma using Chakra UI and
+          Storybook, optimised via multivariate testing.
+      - id: av-obs
+        status: shipped
+        priority: 72
+        tags: [observability, datadog]
+        text: >
+          Led alerting and observability improvements for proactive detection
+          and resolution.
+      - id: av-advisory
+        status: shipped
+        priority: 68
+        tags: [leadership, roadmap]
+        text: >
+          Advised the transition from start-up to enterprise-scale systems and
+          helped structure product squad roadmaps.
+      - id: av-ability
+        status: shipped
+        priority: 60
+        tags: [a11y, community]
+        text: >
+          Active member of Aviva’s Ability Steer Committee, championing
+          accessibility and inclusion.
+
+  - id: flock
+    employer: Flock Cover
+    title: Lead Software Engineer (Tech Lead)
+    location: London
+    start: "2023-02"
+    end: "2024-01"
+    one_liner: >
+      Next-generation insurance platform with modern cloud and serverless
+      infrastructure.
+    stack_line: >
+      Backend: TypeScript, Scala, Lambda, API Gateway, EventBridge, SQS |
+      Frontend: React, Next.js, ECS/Lambda |
+      IaC: CDK, Terraform, GitHub Actions, Datadog
+    bullets:
+      - id: fl-platform
+        status: shipped
+        priority: 80
+        tags: [typescript, react, leadership, insurance]
+        text: >
+          Led full-stack development across Node/TypeScript backends and
+          React/Next.js frontends with a focus on scalability and performance.
+      - id: fl-micro
+        status: shipped
+        priority: 78
+        tags: [aws, serverless, event-driven]
+        text: >
+          Designed microservices on Lambda, ECS, and EventBridge for observable,
+          24×7 services that scale with demand.
+      - id: fl-iac
+        status: shipped
+        priority: 74
+        tags: [terraform, cdk, aws]
+        text: >
+          Championed Terraform and CDK for repeatable AWS provisioning.
+      - id: fl-cicd
+        status: shipped
+        priority: 70
+        tags: [cicd, github-actions]
+        text: >
+          Streamlined CI/CD with GitHub Actions for reliable production deploys.
+      - id: fl-lead
+        status: shipped
+        priority: 72
+        tags: [leadership, mentoring]
+        text: >
+          Mentored engineers and raised the bar on code quality and
+          infrastructure practice.
+
+  - id: accenture
+    employer: Infinity Works (part of Accenture)
+    title: Senior Consultant Full Stack Engineer
+    location: UK
+    start: "2021-10"
+    end: "2023-02"
+    one_liner: >
+      Tech lead for specialty-insurance automation and serverless integrations
+      (client work anonymised where required).
+    stack_line: >
+      TypeScript, Node.js, Postgres, DynamoDB, Lambda, API Gateway, Step
+      Functions, EventBridge, Terraform, Datadog
+    bullets:
+      - id: ac-lead
+        status: shipped
+        priority: 75
+        tags: [leadership, insurance]
+        text: >
+          Acted as Tech Lead — unblocked hard engineering problems, ran
+          knowledge-sharing, and strengthened engineering culture.
+      - id: ac-underwriting
+        status: shipped
+        priority: 78
+        tags: [typescript, automation, insurance, postgres]
+        text: >
+          Led automation for underwriting data extraction and distribution with
+          TypeScript, Node.js, and Postgres on AWS.
+      - id: ac-workflows
+        status: shipped
+        priority: 76
+        tags: [serverless, step-functions, eventbridge]
+        text: >
+          Built serverless, event-driven integrations with Step Functions and
+          EventBridge for multi-service workflows.
+      - id: ac-dynamo
+        status: shipped
+        priority: 74
+        tags: [dynamodb, lambda, observability]
+        text: >
+          Architected Lambda / API Gateway / DynamoDB microservices with
+          CloudWatch and Datadog observability.
+
+  - id: home-office
+    employer: UK Home Office
+    title: Software Engineer
+    location: UK
+    start: "2020-09"
+    end: "2021-10"
+    one_liner: >
+      Graph-backed intelligence tooling and government web applications.
+    stack_line: React, Angular, Node.js, MongoDB, Neo4j, Docker, Kubernetes, Drone
+    bullets:
+      - id: ho-neo4j
+        status: shipped
+        priority: 82
+        tags: [neo4j, etl, graph, ml]
+        text: >
+          Supported ETL into Neo4j graph databases modelling people, assets, and
+          movements; wrote performant Cypher for pattern discovery at scale —
+          central to the platform’s intelligence capabilities.
+      - id: ho-ml
+        status: shipped
+        priority: 80
+        tags: [ml, neo4j, data-science]
+        text: >
+          Worked with data scientists to operationalise ML against the graph
+          layer for anomaly detection and higher-quality investigative leads.
+      - id: ho-apps
+        status: shipped
+        priority: 65
+        tags: [react, node, tdd]
+        text: >
+          Built React/Angular apps and Node REST APIs with TDD/BDD, Docker, and
+          Kubernetes CI via Drone.
+
+  - id: mott
+    employer: Mott MacDonald
+    title: IT Developer
+    location: UK
+    start: "2018-09"
+    end: "2020-09"
+    one_liner: ERP integration and process automation.
+    stack_line: Java, JavaScript, PL/SQL
+    bullets:
+      - id: mm-erp
+        status: shipped
+        priority: 50
+        tags: [java, tdd]
+        text: >
+          Built Java integrations from legacy systems to cloud ERPs using SOLID,
+          design patterns, and TDD.
+      - id: mm-data
+        status: shipped
+        priority: 48
+        tags: [javascript, sql]
+        text: >
+          Delivered electronic forms/workflows and PL/SQL-backed data solutions.
+
+projects:
+  - id: helmsman
+    name: Helmsman
+    status: internal
+    priority: 85
+    tags: [ai-native, tooling, rust, typescript]
+    summary: >
+      Open rules, skills, and checks for agent-written code — readiness scoring,
+      review, and STAR-stack guardrails. Used on Prism and NIDOS.
+    links:
+      - label: Context
+        url: https://github.com/joe-worsfold
+
+  - id: hate-detector
+    name: "Hack Hate 2020: Hate Detector"
+    status: shipped
+    priority: 70
+    tags: [ml, nlp, neo4j, python]
+    summary: >
+      Winner — Best use of AI/ML (AWS) and Best use of location (ESRI). Processed
+      and classified 18.5M+ tweets; graph model in Neo4j for hate-speech network
+      visualisation.
+    links:
+      - label: Presentation
+        url: https://youtu.be/xDyxznaKjCQ?t=1913
+      - label: Code
+        url: https://github.com/HateDetector
+
+education:
+  - institution: Birkbeck, University of London
+    award: MSc Computer Science
+    result: Distinction
+    start: "2017-09"
+    end: "2019-09"
+    summary: >
+      Algorithms, data structures, machine learning, and NLP with emphasis on
+      scalable AI-driven systems.
+    thesis: >
+      Character-level Convolutional Neural Networks for Hate Speech Detection
+      with Intelligent Adversaries — CNN text classification at scale with
+      graph modelling of classified content in Neo4j.
+  - institution: Royal Holloway, University of London
+    award: BA History
+    result: "2:1"
+    start: "2009-09"
+    end: "2013-08"
+    summary: >
+      Analytical writing, research, and communication — foundations that still
+      show up in product and stakeholder work.
+
+# Opt-in research project (off master by default)
+optional_projects:
+  - id: sentinel
+    name: Sentinel
+    status: in_progress
+    priority: 78
+    tags: [rag, embeddings, knn, eval, python]
+    summary: >
+      Research harness embedding news and market candles together for KNN
+      retrieval and LLM-over-neighbors bake-offs, with conviction/eval gates.
+      Company research IP — no personal trading claims on the CV.
+    include_by_default: false
+
+render_defaults:
+  human_max_pages: 3
+  ats_max_pages: 2
+  include_optional_projects: false
+  master_variant: human

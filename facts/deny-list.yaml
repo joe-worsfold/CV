@@ -1,0 +1,20 @@
+# Strings that must never appear in generated CV outputs.
+# Matching is case-insensitive substring.
+
+forbidden:
+  - convex
+  - oanda
+  - spread bet
+  - spread-bet
+  - paper-live pnl
+  - personal token
+  - api_token
+  - password
+  - secret key
+
+# Guidance for the tailor (not matched as substrings)
+notes:
+  - Never name the specialty-insurance MDM client.
+  - Never include personal trading P&L, broker account ids, or credentials.
+  - Do not claim Helmsman is deployed at a client.
+  - Do not claim Prism is a customer production underwriting platform.
