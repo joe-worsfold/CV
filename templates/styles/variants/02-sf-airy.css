@@ -1,0 +1,10 @@
+/* Default recommendation: Teal air + Stack Foundry orange on titles only. */
+:root {
+  --canvas: #eef1f4;
+  --title-rule: #c94d00;
+  --accent: #c94d00;
+  --chip: #eceff3;
+  --chip-ink: #2d3748;
+}
+.sheet { padding: 13mm; border-radius: 20px; }
+.role { margin-bottom: 1.25rem; }

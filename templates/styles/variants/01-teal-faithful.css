@@ -1,0 +1,16 @@
+/* Closest to the Teal export: cool gray canvas, blue title rules, airy type. */
+:root {
+  --canvas: #eef2f6;
+  --paper: #ffffff;
+  --ink: #0f2744;
+  --slate: #1e3a5f;
+  --muted: #4a5d73;
+  --accent: #1d4ed8;
+  --title-rule: #3b82f6;
+  --chip: #e8eef6;
+  --chip-ink: #1e3a5f;
+}
+.sheet { padding: 14mm 14mm 12mm; border-radius: 22px; }
+h1 { font-size: 28pt; }
+.layout { gap: 0 2.4rem; }
+.role { margin-bottom: 1.35rem; }

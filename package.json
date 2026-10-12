@@ -11,6 +11,7 @@
     "cv:tailor": "node scripts/tailor.js",
     "cv:render": "node scripts/render.js",
     "cv:pdf": "node scripts/pdf.js",
+    "cv:variants": "node scripts/generate-variants.js",
     "postinstall": "playwright install chromium"
   },
   "dependencies": {

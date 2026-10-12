@@ -1,0 +1,16 @@
+/* Biggest whitespace: larger type, more gaps, fewer visual edges. */
+:root {
+  --canvas: #f3f5f7;
+  --title-rule: #c94d00;
+  --accent: #c94d00;
+  --chip: #e7edf2;
+}
+body { font-size: 10.1pt; line-height: 1.55; }
+.sheet { padding: 15mm 16mm 13mm; border-radius: 24px; margin: 9mm auto; }
+.portrait { width: 132px; height: 132px; margin-bottom: 1rem; }
+h1 { font-size: 28pt; }
+.masthead { padding-bottom: 1.4rem; margin-bottom: 1.4rem; }
+.layout { gap: 0 2.6rem; }
+.role { margin-bottom: 1.5rem; }
+.role li { margin: 0.4rem 0; }
+.fact { margin-bottom: 1.15rem; }

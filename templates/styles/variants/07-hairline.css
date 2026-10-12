@@ -1,0 +1,12 @@
+/* Almost no colour: slate hairlines, gray chips, orange only on titles. */
+:root {
+  --canvas: #f2f4f6;
+  --title-rule: #c94d00;
+  --accent: #4a5568;
+  --chip: #e8edf1;
+  --chip-ink: #2d3748;
+}
+.contact a,
+.links a { color: #c94d00; }
+.role { padding-bottom: 0.85rem; border-bottom: 1px solid #e2e8f0; }
+.role:last-of-type { border-bottom: 0; }

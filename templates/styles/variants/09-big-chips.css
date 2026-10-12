@@ -1,0 +1,12 @@
+/* Larger, rounder skill bubbles; medium air; orange titles. */
+:root {
+  --canvas: #eef1f4;
+  --title-rule: #c94d00;
+  --accent: #c94d00;
+  --chip: #e4ebf2;
+  --chip-ink: #1a202c;
+}
+.chip { padding: 0.28rem 0.7rem; font-size: 8.2pt; border-radius: 999px; }
+.chips { gap: 0.4rem; }
+.sheet { padding: 13mm; }
+.fact { margin-bottom: 1.05rem; }

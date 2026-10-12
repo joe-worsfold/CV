@@ -1,0 +1,17 @@
+/* Smallest density: still bubbles, less air, more on page 1. */
+:root {
+  --canvas: #eef1f4;
+  --title-rule: #c94d00;
+  --accent: #c94d00;
+  --chip: #e8eef3;
+}
+body { font-size: 8.8pt; line-height: 1.38; }
+.sheet { padding: 9mm 10mm 8mm; border-radius: 14px; margin: 6mm auto; }
+.portrait { width: 96px; height: 96px; margin-bottom: 0.55rem; }
+h1 { font-size: 22pt; }
+.masthead { padding-bottom: 0.7rem; margin-bottom: 0.7rem; }
+.layout { gap: 0 1.3rem; }
+.role { margin-bottom: 0.7rem; }
+.role li { margin: 0.16rem 0; }
+.fact { margin-bottom: 0.55rem; }
+.chip { padding: 0.1rem 0.4rem; }

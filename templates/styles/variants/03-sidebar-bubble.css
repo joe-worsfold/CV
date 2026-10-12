@@ -1,0 +1,12 @@
+/* Soft rounded sidebar card — the “bubble panel” Teal implies. */
+:root {
+  --canvas: #e9eef3;
+  --title-rule: #c94d00;
+  --accent: #c94d00;
+  --sidebar-bg: #f4f7fa;
+  --chip: #e4ebf2;
+  --chip-ink: #2d3748;
+}
+aside { padding: 0.9rem 0.85rem 0.7rem; border: 1px solid #dde3ea; }
+.layout { gap: 0 1.6rem; }
+.fact { margin-bottom: 0.85rem; }

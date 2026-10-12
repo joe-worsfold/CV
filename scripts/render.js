@@ -233,7 +233,9 @@ export function renderVariant(variant, options = {}) {
   const profile = loadProfile();
   const deny = loadDenyList();
   const model = selectContent(profile, { ...options, variant });
-  const css = readStyle(variant === "ats" ? "ats.css" : "human.css");
+  const css =
+    (variant === "ats" ? readStyle("ats.css") : readStyle("human.css")) +
+    (options.cssAppend ? `\n${options.cssAppend}` : "");
   const template = readTemplate(variant === "ats" ? "ats.html" : "human.html");
   const human = variant === "human";
 
@@ -250,6 +252,7 @@ export function renderVariant(variant, options = {}) {
     PROJECTS: projectsHtml(model.projects),
     EDUCATION: educationHtml(model.education),
     CSS: css,
+    THEME: escapeHtml(options.theme || "theme-default"),
   });
 
   assertNoForbidden(html, deny);

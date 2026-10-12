@@ -13,6 +13,10 @@ pnpm cv:build         # → dist/ + root joe-worsfold-cv.{md,html,pdf}
 
 Open `dist/joe-worsfold-cv.html` (human, two-column) or `dist/joe-worsfold-cv.ats.html` (ATS single-column).
 
+```bash
+pnpm cv:variants          # 10 HTML/PDF styles → dist/variants/index.html
+```
+
 ## Edit your facts
 
 **You can edit these now:**

@@ -1,0 +1,16 @@
+/* Editorial: bigger name, more margin, thin orange title rule, quiet chips. */
+:root {
+  --canvas: #f0f2f4;
+  --title-rule: #c94d00;
+  --accent: #c94d00;
+  --chip: #e9eef2;
+  --chip-ink: #2d3748;
+}
+h1 { font-size: 30pt; letter-spacing: -0.04em; }
+aside h2,
+main h2 { border-bottom-width: 2px; font-size: 12pt; letter-spacing: 0.02em; }
+.sheet { padding: 16mm 15mm 13mm; border-radius: 16px; }
+.portrait { width: 112px; height: 112px; }
+.summary { max-width: 62ch; }
+.layout { gap: 0 2.8rem; }
+.role { margin-bottom: 1.4rem; }

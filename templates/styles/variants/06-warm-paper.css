@@ -1,0 +1,13 @@
+/* Warm cream canvas, peach chips, orange titles. */
+:root {
+  --canvas: #f3eee8;
+  --paper: #fffdf9;
+  --ink: #1c1917;
+  --slate: #44403c;
+  --muted: #57534e;
+  --title-rule: #c94d00;
+  --accent: #c94d00;
+  --chip: #f3e4d6;
+  --chip-ink: #7a2e00;
+}
+.sheet { border-radius: 20px; }

@@ -1,4 +1,5 @@
 dist/preview-*.png
+dist/variants/
 node_modules/
 .playwright/
 inbox/*
