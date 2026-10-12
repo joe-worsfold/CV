@@ -1,20 +1,20 @@
 @page {
   size: A4;
-  margin: 12mm 13mm 12mm;
+  margin: 7mm;
 }
 
-/* Split-panel + warm paper. Page is the sheet — no gray canvas gutters. */
 :root {
-  --ink: #1c1917;
-  --slate: #44403c;
-  --muted: #57534e;
-  --line: #d6d3d1;
-  --rule: #a8a29e;
-  --paper: #fffdf9;
-  --sidebar: #f3ebe3;
+  --ink: #1a1a1a;
+  --slate: #2d3748;
+  --muted: #4a5568;
+  --line: #d8dee6;
+  --canvas: #e6e9ee;
+  --paper: #ffffff;
+  --sidebar: rgba(45, 55, 72, 0.07);
   --accent: #c94d00;
-  --chip: #f0e0d0;
-  --chip-ink: #7a2e00;
+  --chip: #ffffff;
+  --chip-ink: #2d3748;
+  --border: rgba(45, 55, 72, 0.28);
 }
 
 * {
@@ -26,7 +26,7 @@ body {
   margin: 0;
   padding: 0;
   color: var(--ink);
-  background: var(--paper);
+  background: var(--canvas);
   font-family: "Avenir Next", "Segoe UI", "Helvetica Neue", sans-serif;
   font-size: 9.6pt;
   line-height: 1.48;
@@ -34,12 +34,13 @@ body {
 }
 
 .sheet {
-  max-width: none;
-  margin: 0;
-  padding: 0;
   background: var(--paper);
-  border-radius: 0;
-  box-shadow: none;
+  border: 1px solid var(--border);
+  border-radius: 18px;
+  padding: 11mm 12mm 10mm;
+  margin: 0;
+  box-decoration-break: clone;
+  -webkit-box-decoration-break: clone;
 }
 
 .masthead {
@@ -47,9 +48,9 @@ body {
   flex-direction: column;
   align-items: center;
   text-align: center;
-  padding: 0 0 1.1rem;
-  margin: 0 0 1.1rem;
-  border-bottom: 1.5px solid var(--rule);
+  padding: 0 0 1.15rem;
+  margin: 0 0 1.05rem;
+  border: 0;
 }
 
 .portrait {
@@ -139,25 +140,10 @@ main h2 {
   margin: 0 0 0.75rem;
   font-size: 13pt;
   font-weight: 700;
-  border-bottom: 3px solid var(--accent);
+  border-bottom: 3px solid var(--slate);
   display: inline-block;
-  padding-bottom: 0.18rem;
+  padding-bottom: 0.16rem;
   line-height: 1.15;
-}
-
-main h2 {
-  display: block;
-  width: 100%;
-  border-bottom: 2px solid var(--rule);
-}
-
-main h2::after {
-  content: "";
-  display: block;
-  width: 2.4rem;
-  height: 3px;
-  background: var(--accent);
-  margin-top: 0.28rem;
 }
 
 .fact {
@@ -197,16 +183,8 @@ main h2::after {
 .project,
 .edu {
   margin: 0 0 0.95rem;
-  padding: 0 0 0.85rem;
-  border-bottom: 1px solid var(--line);
-}
-
-.role:last-child,
-.project:last-child,
-.edu:last-child {
-  border-bottom: 0;
-  padding-bottom: 0;
-  margin-bottom: 0;
+  padding: 0;
+  border: 0;
 }
 
 .role header,
@@ -303,9 +281,7 @@ main h2::after {
 
 .projects,
 .education {
-  margin-top: 1.05rem;
-  padding-top: 0.85rem;
-  border-top: 1.5px solid var(--rule);
+  margin-top: 1.15rem;
 }
 
 .page-foot {
@@ -314,10 +290,10 @@ main h2::after {
 
 @media print {
   html,
-  body,
-  .sheet {
-    background: var(--paper);
+  body {
+    background: var(--canvas);
   }
+  .sheet,
   .chip,
   .portrait,
   aside {
