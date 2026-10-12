@@ -26,7 +26,7 @@ pnpm cv:tailor <jd-path> --include-sentinel
 ```
 
 Default headline for Staff AI adverts: `Staff AI Engineer`.  
-Master market title in facts: `Principal Engineer (AI & Platform)`.
+Master market title in facts: `Founder & Principal Architect` (aligned with LinkedIn).
 
 ## Outputs
 

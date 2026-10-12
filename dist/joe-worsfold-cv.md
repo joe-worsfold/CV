@@ -1,23 +1,19 @@
 # Joe Worsfold
 
-**Principal Engineer (AI & Platform)**
+**Founder & Principal Architect**
 
-Principal Engineer (AI & Platform) and Technical Director at Stack Foundry Ltd, with 8+ years shipping production systems in insurance and government. Recently delivered a production-scale master data platform for specialty insurance — RAG, embeddings, OpenSearch semantic enrichment, and agentic entity resolution where deterministic matching fails — used by underwriters and dataops. Building agent-to-agent harnesses for local context and document embeddings (Prism), plus Helmsman readiness checks for AI-native engineering. Prior lead roles in Go/TypeScript serverless platforms at Aviva Zero and Flock.
+Founder and Technical Director at Stack Foundry UK — Principal Architect for agentic AI workflows and scalable event-driven systems. AWS AI Award winner (Hack Hate). Core stack: Rust, TypeScript, and Python. Partner with teams as an external architect or embedded principal leader to ship autonomous, high-performance systems without sacrificing operational reliability. Recent production MDM for specialty insurance: RAG, embeddings, OpenSearch semantic enrichment, and agentic entity resolution used by underwriters and dataops. Building Prism (agent-to-agent local context and document embeddings) and Helmsman (AI-native readiness checks). Prior lead roles on Go/TypeScript serverless platforms at Aviva Zero and Flock.
 
 ## Skills
-- **AI & agents:** RAG & embeddings, OpenSearch semantic search, LangChain agentic workflows, LLM selection & evaluation harnesses, Agent-to-agent context assembly, MCP-oriented tool boundaries, Cursor / AI-native engineering, Helmsman AI-readiness checks
-- **Languages:** Rust, Go, TypeScript, Python, SQL
-- **Cloud & platform:** AWS Lambda, API Gateway, EventBridge, SQS, DynamoDB, ECS, Step Functions, CDK / Terraform, Serverless event-driven architectures
-- **Data:** OpenSearch, Neo4j, PostgreSQL, SurrealDB, Pinecone, DynamoDB
-- **Frontend:** React, Next.js, HTML / CSS, Accessible UI
-- **Practices:** Observability (Datadog, CloudWatch, PagerDuty), CI/CD (GitHub Actions), Tech leadership & mentoring, FCA-aware financial services delivery
+- **Core:** Rust, TypeScript, Python, Go, Agentic AI workflows, RAG & embeddings, AWS (serverless / event-driven)
+- **Also strong:** OpenSearch, LangChain agents, Neo4j, DynamoDB / Postgres, React / Next.js, CDK / Terraform, Cursor / AI-native engineering
 
 ## Experience
 
-### Principal Engineer (AI & Platform) | Stack Foundry Ltd | 07/2025 – Present
+### Founder & Principal Architect | Stack Foundry Ltd | 07/2025 – Present
 *Technical Director · sole director*
 
-Founder-led engineering consultancy. Principal delivery on AI-native platforms and specialty-insurance data systems; building Prism and Helmsman.
+Founder-led consultancy. Principal architecture for agentic AI workflows and specialty-insurance data systems; building Prism and Helmsman.
 *Consultancy started while wrapping Aviva Zero.*
 
 `Rust, TypeScript, Python, AWS (Lambda, OpenSearch, event-driven), LangChain, RAG/embeddings, SurrealDB, Cursor`
