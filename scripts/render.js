@@ -66,12 +66,10 @@ function rolesHtml(roles) {
       <article class="role">
         <header>
           <div class="role-title">
-            <h3>${escapeHtml(role.resolvedTitle)}${role.employer ? `, ${escapeHtml(role.employer)}` : ""}</h3>
-            ${
-              role.location
-                ? `<p class="employer">${ICONS.pin} ${escapeHtml(role.location)}</p>`
-                : ""
-            }
+            <h3>${escapeHtml(role.resolvedTitle)}</h3>
+            <p class="employer">${role.employer ? `${escapeHtml(role.employer)}` : ""}${
+              role.location ? `${role.employer ? " · " : ""}${ICONS.pin} ${escapeHtml(role.location)}` : ""
+            }</p>
           </div>
           <p class="dates">${escapeHtml(role.dateRange)}<span>${escapeHtml(role.duration)}</span></p>
         </header>
