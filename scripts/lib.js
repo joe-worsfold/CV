@@ -43,8 +43,39 @@ export function formatMonth(ym) {
   return `${m}/${y}`;
 }
 
+export function parseYearMonth(ym) {
+  const [y, m] = String(ym).split("-").map(Number);
+  return new Date(y, (m || 1) - 1, 1);
+}
+
+export function formatDuration(startYm, endYm, now = new Date()) {
+  const start = parseYearMonth(startYm);
+  const end = !endYm || endYm === "present" ? now : parseYearMonth(endYm);
+  let months = (end.getFullYear() - start.getFullYear()) * 12 + (end.getMonth() - start.getMonth());
+  if (!endYm || endYm === "present") months += 1;
+  if (months < 1) months = 1;
+  const years = Math.floor(months / 12);
+  const rem = months % 12;
+  if (years && rem) return `${years} year${years === 1 ? "" : "s"} ${rem} month${rem === 1 ? "" : "s"}`;
+  if (years) return `${years} year${years === 1 ? "" : "s"}`;
+  return `${months} month${months === 1 ? "" : "s"}`;
+}
+
 export function roleDateRange(role) {
   return `${formatMonth(role.start)} – ${formatMonth(role.end)}`;
+}
+
+export function roleDurationLabel(role) {
+  return formatDuration(role.start, role.end);
+}
+
+export function photoDataUri(identity) {
+  if (!identity?.photo) return "";
+  const file = path.resolve(root, identity.photo);
+  if (!fs.existsSync(file)) return "";
+  const ext = path.extname(file).slice(1).toLowerCase();
+  const mime = ext === "jpg" || ext === "jpeg" ? "jpeg" : ext;
+  return `data:image/${mime};base64,${fs.readFileSync(file).toString("base64")}`;
 }
 
 export function selectContent(profile, options = {}) {
@@ -89,6 +120,7 @@ export function selectContent(profile, options = {}) {
           ? `${profile.titles.legal_title} · sole director`
           : null,
       dateRange: roleDateRange(role),
+      duration: roleDurationLabel(role),
       bullets,
     };
   });
@@ -102,12 +134,14 @@ export function selectContent(profile, options = {}) {
   return {
     identity: profile.identity,
     titles: profile.titles,
+    sidebar: profile.sidebar || {},
     headline: headline || profile.titles.market_title,
     summary: options.summary || profile.summary,
     skills: profile.skills,
     roles,
     projects,
     education: profile.education,
+    photo: variant === "human" ? photoDataUri(profile.identity) : "",
     variant,
   };
 }

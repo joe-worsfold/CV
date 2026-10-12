@@ -6,20 +6,31 @@ identity:
   location: London, United Kingdom
   phone: "+44 7414 873908"
   email: joseph.worsfold@gmail.com
+  photo: assets/joe-worsfold.jpg
+  languages:
+    - English (fluent)
   links:
     - label: LinkedIn
       url: https://www.linkedin.com/in/joe-worsfold/
     - label: GitHub
       url: https://github.com/joe-worsfold
-    - label: CV repo
-      url: https://github.com/joe-worsfold/CV
   work_eligibility: UK
   preferences:
-    work_type: Remote or hybrid (UK)
+    work_type: Remote
     targets:
       - Staff AI Engineer
       - Founding Engineer
-      - Principal Architect / Principal Engineer
+      - Principal Architect
+
+sidebar:
+  positions:
+    - Principal Architect
+    - Founding Engineer
+    - Staff AI
+  experience_level:
+    - Principal
+    - Lead
+    - Senior
 
 titles:
   legal_title: Technical Director
@@ -28,16 +39,11 @@ titles:
   # Per-run override via CLI: --headline "Staff AI Engineer"
 
 summary: >
-  Founder and Technical Director at Stack Foundry UK — Principal Architect for
-  agentic AI workflows and scalable event-driven systems. AWS AI Award winner
-  (Hack Hate). Core stack: Rust, TypeScript, and Python. Partner with teams as
-  an external architect or embedded principal leader to ship autonomous,
-  high-performance systems without sacrificing operational reliability. Recent
-  production MDM for specialty insurance: RAG, embeddings, OpenSearch semantic
-  enrichment, and agentic entity resolution used by underwriters and dataops.
-  Building Prism (agent-to-agent local context and document embeddings) and
-  Helmsman (AI-native readiness checks). Prior lead roles on Go/TypeScript
-  serverless platforms at Aviva Zero and Flock.
+  Founder and Technical Director at Stack Foundry UK. Principal Architect for
+  agentic AI workflows and event-driven systems in Rust, TypeScript, and Python.
+  AWS AI Award winner. I embed as a principal technical leader — or consult as
+  an external architect — to ship autonomous, high-performance systems without
+  sacrificing operational reliability.
 
 skills:
   # Billboard only — depth lives in experience bullets / stack lines
@@ -80,6 +86,7 @@ roles:
         status: shipped
         priority: 100
         tags: [ai, rag, opensearch, langchain, mdm, insurance, aws, leadership]
+        lead: Production MDM platform
         text: >
           Delivered a production master data management platform for a specialty
           insurance client in six months, replacing multi-system complexity with
@@ -89,6 +96,7 @@ roles:
         status: shipped
         priority: 95
         tags: [ai, rag, embeddings, opensearch, search]
+        lead: RAG & semantic search
         text: >
           Designed LLM selection, RAG, and embedding pipelines with OpenSearch
           semantic enrichment to improve discoverability across messy insurance
@@ -97,6 +105,7 @@ roles:
         status: shipped
         priority: 94
         tags: [ai, langchain, agents, entity-resolution, mdm]
+        lead: Agentic entity resolution
         text: >
           When deterministic entity resolution failed, introduced LangChain
           agentic workflows so the system could gather context and propose
@@ -106,6 +115,7 @@ roles:
         status: shipped
         priority: 88
         tags: [ai-native, mentoring, guardrails, cursor]
+        lead: AI-native engineering
         text: >
           Taught client developers AI-native delivery and built bespoke
           guardrails for agentic coding workflows (Cursor-centred practice).
@@ -113,6 +123,7 @@ roles:
         status: in_progress
         priority: 80
         tags: [ai, agents, embeddings, prism, a2a]
+        lead: Prism workbench
         text: >
           Building Prism — an agent-to-agent workbench focused on local context
           assembly and document embeddings for underwriting-style knowledge work
@@ -121,6 +132,7 @@ roles:
         status: internal
         priority: 75
         tags: [ai-native, helmsman, tooling, rust, typescript]
+        lead: Helmsman
         text: >
           Created Helmsman — rules, skills, and checks that score AI-readiness
           and keep agent-written code honest. Used on Prism and NIDOS; patterns
@@ -144,6 +156,7 @@ roles:
         status: shipped
         priority: 90
         tags: [go, aws, serverless, event-driven]
+        lead: Event-driven serverless
         text: >
           Designed and implemented event-driven serverless architectures in Go
           using Lambda, SQS, EventBridge, and SES for asynchronous workflows,
@@ -152,6 +165,7 @@ roles:
         status: shipped
         priority: 88
         tags: [scale, reliability, insurance]
+        lead: Scale & availability
         text: >
           Built and maintained a platform that has sold over a million policies
           and supports tens of thousands of daily users, with 24/7 reliability
@@ -160,6 +174,7 @@ roles:
         status: shipped
         priority: 85
         tags: [payments, fca, go]
+        lead: Financial services
         text: >
           Delivered financially sensitive services including BACS payment
           workflows, interest-bearing monthly instalments, and secure customer
@@ -168,6 +183,7 @@ roles:
         status: shipped
         priority: 70
         tags: [react, frontend, a11y]
+        lead: Accessible UI
         text: >
           Shipped accessible React frontends from Figma using Chakra UI and
           Storybook, optimised via multivariate testing.
@@ -175,6 +191,7 @@ roles:
         status: shipped
         priority: 72
         tags: [observability, datadog]
+        lead: Observability
         text: >
           Led alerting and observability improvements for proactive detection
           and resolution.
@@ -182,6 +199,7 @@ roles:
         status: shipped
         priority: 68
         tags: [leadership, roadmap]
+        lead: Advisory
         text: >
           Advised the transition from start-up to enterprise-scale systems and
           helped structure product squad roadmaps.
@@ -189,6 +207,7 @@ roles:
         status: shipped
         priority: 60
         tags: [a11y, community]
+        lead: Community
         text: >
           Active member of Aviva’s Ability Steer Committee, championing
           accessibility and inclusion.
@@ -211,6 +230,7 @@ roles:
         status: shipped
         priority: 80
         tags: [typescript, react, leadership, insurance]
+        lead: Insurance platform
         text: >
           Led full-stack development across Node/TypeScript backends and
           React/Next.js frontends with a focus on scalability and performance.
@@ -218,6 +238,7 @@ roles:
         status: shipped
         priority: 78
         tags: [aws, serverless, event-driven]
+        lead: Microservices
         text: >
           Designed microservices on Lambda, ECS, and EventBridge for observable,
           24×7 services that scale with demand.
@@ -225,18 +246,21 @@ roles:
         status: shipped
         priority: 74
         tags: [terraform, cdk, aws]
+        lead: Infrastructure as Code
         text: >
           Championed Terraform and CDK for repeatable AWS provisioning.
       - id: fl-cicd
         status: shipped
         priority: 70
         tags: [cicd, github-actions]
+        lead: CI/CD
         text: >
           Streamlined CI/CD with GitHub Actions for reliable production deploys.
       - id: fl-lead
         status: shipped
         priority: 72
         tags: [leadership, mentoring]
+        lead: Team leadership
         text: >
           Mentored engineers and raised the bar on code quality and
           infrastructure practice.
@@ -258,6 +282,7 @@ roles:
         status: shipped
         priority: 75
         tags: [leadership, insurance]
+        lead: Tech leadership
         text: >
           Acted as Tech Lead — unblocked hard engineering problems, ran
           knowledge-sharing, and strengthened engineering culture.
@@ -265,6 +290,7 @@ roles:
         status: shipped
         priority: 78
         tags: [typescript, automation, insurance, postgres]
+        lead: Underwriting automation
         text: >
           Led automation for underwriting data extraction and distribution with
           TypeScript, Node.js, and Postgres on AWS.
@@ -272,6 +298,7 @@ roles:
         status: shipped
         priority: 76
         tags: [serverless, step-functions, eventbridge]
+        lead: Event-driven workflows
         text: >
           Built serverless, event-driven integrations with Step Functions and
           EventBridge for multi-service workflows.
@@ -279,6 +306,7 @@ roles:
         status: shipped
         priority: 74
         tags: [dynamodb, lambda, observability]
+        lead: Serverless microservices
         text: >
           Architected Lambda / API Gateway / DynamoDB microservices with
           CloudWatch and Datadog observability.
@@ -297,6 +325,7 @@ roles:
         status: shipped
         priority: 82
         tags: [neo4j, etl, graph, ml]
+        lead: Graph intelligence
         text: >
           Supported ETL into Neo4j graph databases modelling people, assets, and
           movements; wrote performant Cypher for pattern discovery at scale —
@@ -305,6 +334,7 @@ roles:
         status: shipped
         priority: 80
         tags: [ml, neo4j, data-science]
+        lead: Operationalising ML
         text: >
           Worked with data scientists to operationalise ML against the graph
           layer for anomaly detection and higher-quality investigative leads.
@@ -312,6 +342,7 @@ roles:
         status: shipped
         priority: 65
         tags: [react, node, tdd]
+        lead: Government applications
         text: >
           Built React/Angular apps and Node REST APIs with TDD/BDD, Docker, and
           Kubernetes CI via Drone.
@@ -329,6 +360,7 @@ roles:
         status: shipped
         priority: 50
         tags: [java, tdd]
+        lead: ERP integration
         text: >
           Built Java integrations from legacy systems to cloud ERPs using SOLID,
           design patterns, and TDD.
@@ -336,6 +368,7 @@ roles:
         status: shipped
         priority: 48
         tags: [javascript, sql]
+        lead: Process automation
         text: >
           Delivered electronic forms/workflows and PL/SQL-backed data solutions.
 

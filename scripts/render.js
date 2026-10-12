@@ -17,13 +17,23 @@ function fill(template, map) {
   return template.replace(/\{\{(\w+)\}\}/g, (_, key) => map[key] ?? "");
 }
 
+const ICONS = {
+  pin: `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M12 2a7 7 0 0 0-7 7c0 5.25 7 13 7 13s7-7.75 7-13a7 7 0 0 0-7-7zm0 9.5A2.5 2.5 0 1 1 12 6a2.5 2.5 0 0 1 0 5.5z"/></svg>`,
+  phone: `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M6.6 10.8a15.1 15.1 0 0 0 6.6 6.6l2.2-2.2a1 1 0 0 1 1-.25 11.4 11.4 0 0 0 3.6.57 1 1 0 0 1 1 1V20a1 1 0 0 1-1 1A17 17 0 0 1 3 7a1 1 0 0 1 1-1h3.5a1 1 0 0 1 1 1 11.4 11.4 0 0 0 .57 3.6 1 1 0 0 1-.25 1z"/></svg>`,
+  mail: `<svg class="icon" viewBox="0 0 24 24" aria-hidden="true"><path fill="currentColor" d="M20 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V6a2 2 0 0 0-2-2zm0 4-8 5L4 8V6l8 5 8-5z"/></svg>`,
+};
+
+function chips(items) {
+  return `<div class="chips">${items.map((i) => `<span class="chip">${escapeHtml(i)}</span>`).join("")}</div>`;
+}
+
 function skillsHtml(skills) {
   return skills
     .map(
       (g) => `
-      <div class="skill-group">
+      <div class="fact">
         <h3>${escapeHtml(g.group)}</h3>
-        <ul>${g.items.map((i) => `<li>${escapeHtml(i)}</li>`).join("")}</ul>
+        ${chips(g.items)}
       </div>`,
     )
     .join("");
@@ -33,33 +43,41 @@ function skillsFlat(skills) {
   return skills.map((g) => `<p><strong>${escapeHtml(g.group)}:</strong> ${escapeHtml(g.items.join(", "))}</p>`).join("");
 }
 
-function rolesHtml(roles, { showStack = true } = {}) {
+function stackHtml(stackLine) {
+  if (!stackLine) return "";
+  const raw = oneLine(stackLine);
+  const parts = raw.includes("|")
+    ? raw.split("|").map((s) => s.trim()).filter(Boolean)
+    : raw.split(",").map((s) => s.trim()).filter(Boolean);
+  if (parts.length > 1) return `<p class="stack">${chips(parts)}</p>`;
+  return `<p class="stack-line">${escapeHtml(raw)}</p>`;
+}
+
+function bulletHtml(b) {
+  const lead = b.lead ? `<strong>${escapeHtml(b.lead)}:</strong> ` : "";
+  return `<li>${lead}${escapeHtml(oneLine(b.text))}</li>`;
+}
+
+function rolesHtml(roles) {
   return roles
     .map((role) => {
-      const items = role.bullets
-        .map((b) => {
-          const prefix =
-            b.status === "in_progress"
-              ? `<span class="badge">In progress</span> `
-              : b.status === "internal"
-                ? `<span class="badge">Internal</span> `
-                : "";
-          return `<li>${prefix}${escapeHtml(oneLine(b.text))}</li>`;
-        })
-        .join("");
+      const items = role.bullets.map(bulletHtml).join("");
       return `
       <article class="role">
         <header>
           <div class="role-title">
-            <h3>${escapeHtml(role.resolvedTitle)}</h3>
-            <p class="employer">${escapeHtml(role.employer)}${role.location ? ` · ${escapeHtml(role.location)}` : ""}</p>
-            ${role.legalSubtitle ? `<p class="legal">${escapeHtml(role.legalSubtitle)}</p>` : ""}
+            <h3>${escapeHtml(role.resolvedTitle)}${role.employer ? `, ${escapeHtml(role.employer)}` : ""}</h3>
+            ${
+              role.location
+                ? `<p class="employer">${ICONS.pin} ${escapeHtml(role.location)}</p>`
+                : ""
+            }
           </div>
-          <p class="dates">${escapeHtml(role.dateRange)}</p>
+          <p class="dates">${escapeHtml(role.dateRange)}<span>${escapeHtml(role.duration)}</span></p>
         </header>
         <p class="one-liner">${escapeHtml(oneLine(role.one_liner))}</p>
         ${role.note ? `<p class="note">${escapeHtml(oneLine(role.note))}</p>` : ""}
-        ${showStack && role.stack_line ? `<p class="stack">${escapeHtml(oneLine(role.stack_line))}</p>` : ""}
+        ${stackHtml(role.stack_line)}
         <ul>${items}</ul>
       </article>`;
     })
@@ -100,10 +118,12 @@ function educationHtml(education) {
       return `
       <article class="edu">
         <header>
-          <h3>${escapeHtml(e.institution)}</h3>
+          <div>
+            <h3>${escapeHtml(e.institution)}</h3>
+            <p class="award">${escapeHtml(e.award)}${e.result ? `, ${escapeHtml(e.result)}` : ""}</p>
+          </div>
           <p class="dates">${escapeHtml(dates)}</p>
         </header>
-        <p class="award">${escapeHtml(e.award)}${e.result ? `, ${escapeHtml(e.result)}` : ""}</p>
         ${e.summary ? `<p>${escapeHtml(oneLine(e.summary))}</p>` : ""}
         ${e.thesis ? `<p class="thesis"><strong>Thesis:</strong> ${escapeHtml(oneLine(e.thesis))}</p>` : ""}
       </article>`;
@@ -111,28 +131,53 @@ function educationHtml(education) {
     .join("");
 }
 
-function contactHtml(identity) {
-  const links = (identity.links || []).map((l) => `<a href="${escapeHtml(l.url)}">${escapeHtml(l.label)}</a>`).join(" · ");
+function contactItem(icon, inner) {
+  return `<span class="contact-item">${icon}${inner}</span>`;
+}
+
+function contactHtml(identity, { icons = false } = {}) {
+  const links = (identity.links || []).map((l) => `<a href="${escapeHtml(l.url)}">${escapeHtml(l.label)}</a>`);
+  if (!icons) {
+    const bits = [identity.location, identity.phone, identity.email ? `<a href="mailto:${escapeHtml(identity.email)}">${escapeHtml(identity.email)}</a>` : "", ...links].filter(
+      Boolean,
+    );
+    return `<p class="contact">${bits.join(" · ")}</p>`;
+  }
+  const parts = [
+    identity.location ? contactItem(ICONS.pin, escapeHtml(identity.location)) : "",
+    identity.phone ? contactItem(ICONS.phone, escapeHtml(identity.phone)) : "",
+    identity.email
+      ? contactItem(ICONS.mail, `<a href="mailto:${escapeHtml(identity.email)}">${escapeHtml(identity.email)}</a>`)
+      : "",
+    ...links.map((html) => `<span class="contact-item">${html}</span>`),
+  ].filter(Boolean);
+  return `<p class="contact">${parts.join("")}</p>`;
+}
+
+function factBlock(title, items) {
+  if (!items?.length) return "";
   return `
-    <p class="contact">
-      ${escapeHtml(identity.location)}
-      ${identity.phone ? ` · ${escapeHtml(identity.phone)}` : ""}
-      ${identity.email ? ` · <a href="mailto:${escapeHtml(identity.email)}">${escapeHtml(identity.email)}</a>` : ""}
-      ${links ? ` · ${links}` : ""}
-    </p>`;
+    <div class="fact">
+      <h3>${escapeHtml(title)}</h3>
+      ${items.length === 1 ? `<p>${escapeHtml(items[0])}</p>` : chips(items)}
+    </div>`;
 }
 
 function metaSidebar(model) {
   const prefs = model.identity.preferences || {};
-  return `
-    <div class="meta">
-      <h3>Focus</h3>
-      <ul>${(prefs.targets || []).map((t) => `<li>${escapeHtml(t)}</li>`).join("")}</ul>
-      <h3>Eligibility</h3>
-      <p>${escapeHtml(model.identity.work_eligibility || "UK")}</p>
-      <h3>Work type</h3>
-      <p>${escapeHtml(prefs.work_type || "Flexible")}</p>
-    </div>`;
+  const side = model.sidebar || {};
+  return [
+    factBlock("Positions", side.positions),
+    factBlock("Experience level", side.experience_level),
+    factBlock("Work eligibility", [model.identity.work_eligibility].filter(Boolean)),
+    factBlock("Work type", [prefs.work_type].filter(Boolean)),
+    factBlock("Languages", model.identity.languages),
+  ].join("");
+}
+
+function photoHtml(src, name) {
+  if (!src) return "";
+  return `<img class="portrait" src="${src}" alt="${escapeHtml(name)}" width="112" height="112" />`;
 }
 
 function toMarkdown(model) {
@@ -151,8 +196,7 @@ function toMarkdown(model) {
   lines.push("## Experience");
   for (const role of model.roles) {
     lines.push("");
-    lines.push(`### ${role.resolvedTitle} | ${role.employer} | ${role.dateRange}`);
-    if (role.legalSubtitle) lines.push(`*${role.legalSubtitle}*`);
+    lines.push(`### ${role.resolvedTitle} | ${role.employer} | ${role.dateRange} (${role.duration})`);
     lines.push("");
     lines.push(oneLine(role.one_liner));
     if (role.note) lines.push(`*${oneLine(role.note)}*`);
@@ -160,7 +204,8 @@ function toMarkdown(model) {
     lines.push("");
     for (const b of role.bullets) {
       const tag = b.status === "in_progress" ? " *(in progress)*" : b.status === "internal" ? " *(internal)*" : "";
-      lines.push(`- ${oneLine(b.text)}${tag}`);
+      const lead = b.lead ? `**${b.lead}:** ` : "";
+      lines.push(`- ${lead}${oneLine(b.text)}${tag}`);
     }
   }
   if (model.projects.length) {
@@ -190,16 +235,18 @@ export function renderVariant(variant, options = {}) {
   const model = selectContent(profile, { ...options, variant });
   const css = readStyle(variant === "ats" ? "ats.css" : "human.css");
   const template = readTemplate(variant === "ats" ? "ats.html" : "human.html");
+  const human = variant === "human";
 
   const html = fill(template, {
     TITLE: escapeHtml(`${model.identity.name} — ${model.headline}`),
     NAME: escapeHtml(model.identity.name),
     HEADLINE: escapeHtml(model.headline),
     SUMMARY: escapeHtml(oneLine(model.summary)),
-    CONTACT: contactHtml(model.identity),
+    CONTACT: contactHtml(model.identity, { icons: human }),
+    PHOTO: photoHtml(model.photo, model.identity.name),
     META: metaSidebar(model),
-    SKILLS: variant === "ats" ? skillsFlat(model.skills) : skillsHtml(model.skills),
-    ROLES: rolesHtml(model.roles, { showStack: true }),
+    SKILLS: human ? skillsHtml(model.skills) : skillsFlat(model.skills),
+    ROLES: rolesHtml(model.roles),
     PROJECTS: projectsHtml(model.projects),
     EDUCATION: educationHtml(model.education),
     CSS: css,

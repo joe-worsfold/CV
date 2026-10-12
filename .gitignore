@@ -1,3 +1,4 @@
+dist/preview-*.png
 node_modules/
 .playwright/
 inbox/*
